@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Spin Casino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <h1>Lucky Spin Casino</h1>
+            <p class="tagline">Welcome to the ultimate simulation experience</p>
+            
+            <form id="loginForm" class="login-form">
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="Enter username" 
+                    required
+                >
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter password" 
+                    required
+                >
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            
+            <div class="create-account">
+                <p>New player? <button type="button" id="createAccountBtn" class="link-btn">Create Account</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Account Screen -->
+    <div id="createAccountScreen" class="screen">
+        <div class="login-container">
+            <h1>Create Account</h1>
+            <p class="tagline">Join Lucky Spin Casino today</p>
+            
+            <form id="createAccountForm" class="login-form">
+                <input 
+                    type="text" 
+                    id="newUsername" 
+                    placeholder="Choose username" 
+                    required
+                    minlength="3"
+                >
+                <input 
+                    type="password" 
+                    id="newPassword" 
+                    placeholder="Choose password" 
+                    required
+                    minlength="4"
+                >
+                <input 
+                    type="number" 
+                    id="initialFunds" 
+                    placeholder="Starting balance ($)" 
+                    value="1000"
+                    min="100"
+                    step="100"
+                    required
+                >
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+            
+            <div class="create-account">
+                <p><button type="button" id="backToLoginBtn" class="link-btn">Back to Login</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Lobby Screen -->
+    <div id="lobbyScreen" class="screen">
+        <header class="header">
+            <div class="header-left">
+                <h1>Lucky Spin Casino</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userDisplay">Player</span>
+                    <span id="balanceDisplay" class="balance">$0</span>
+                </div>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <main class="lobby-content">
+            <div class="section-title">Select a Game</div>
+            
+            <div class="games-grid">
+                <!-- Game 1: Classic Slots -->
+                <div class="game-card">
+                    <div class="game-card-image classic-slots"></div>
+                    <h2>Classic Slots</h2>
+                    <p>Traditional 5-line slot machine with golden prizes</p>
+                    <p class="game-info">Bet: $1 - $100 | Paylines: 5</p>
+                    <button class="btn btn-primary play-btn" data-game="classic">Play Now</button>
+                </div>
+
+                <!-- Game 2: Diamond Rush -->
+                <div class="game-card">
+                    <div class="game-card-image diamond-rush"></div>
+                    <h2>Diamond Rush</h2>
+                    <p>Exciting diamond-themed slots with big multipliers</p>
+                    <p class="game-info">Bet: $1 - $200 | Paylines: 5</p>
+                    <button class="btn btn-primary play-btn" data-game="diamond">Play Now</button>
+                </div>
+            </div>
+
+            <!-- Funds Management Section -->
+            <div class="funds-section">
+                <h3>Account Management</h3>
+                <div class="funds-container">
+                    <div class="funds-box">
+                        <label for="addAmount">Add Funds:</label>
+                        <div class="input-group">
+                            <input 
+                                type="number" 
+                                id="addAmount" 
+                                placeholder="Amount" 
+                                min="10"
+                                step="10"
+                            >
+                            <button id="addFundsBtn" class="btn btn-success">Add</button>
+                        </div>
+                    </div>
+
+                    <div class="funds-box">
+                        <label for="removeAmount">Remove Funds:</label>
+                        <div class="input-group">
+                            <input 
+                                type="number" 
+                                id="removeAmount" 
+                                placeholder="Amount" 
+                                min="10"
+                                step="10"
+                            >
+                            <button id="removeFundsBtn" class="btn btn-danger">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <header class="header">
+            <button id="backToLobbyBtn" class="btn btn-secondary">Back to Lobby</button>
+            <div class="game-header">
+                <h1 id="gameTitle">Slot Machine</h1>
+            </div>
+            <div class="game-balance">
+                <span id="gameBalanceDisplay" class="balance">$0</span>
+            </div>
+        </header>
+
+        <main class="game-content">
+            <!-- Slot Machine Container -->
+            <div class="slot-machine">
+                <div class="reel-container">
+                    <div class="reel" id="reel1"></div>
+                    <div class="reel" id="reel2"></div>
+                    <div class="reel" id="reel3"></div>
+                </div>
+
+                <!-- Paylines Display -->
+                <div class="paylines-display" id="paylinesDisplay">
+                    <div class="payline-info">Payline 1 (Top)</div>
+                    <div class="payline-info">Payline 2 (Middle)</div>
+                    <div class="payline-info">Payline 3 (Bottom)</div>
+                    <div class="payline-info">Payline 4 (Top-Left to Bottom-Right)</div>
+                    <div class="payline-info">Payline 5 (Bottom-Left to Top-Right)</div>
+                </div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <div class="bet-control">
+                    <label for="betAmount">Bet per Line:</label>
+                    <input 
+                        type="number" 
+                        id="betAmount" 
+                        min="1" 
+                        max="100" 
+                        value="10"
+                        step="1"
+                    >
+                    <span class="total-bet">Total Bet: <span id="totalBet">$50</span></span>
+                </div>
+
+                <button id="spinBtn" class="btn btn-spin">SPIN</button>
+
+                <div class="result-display">
+                    <div id="winMessage" class="win-message"></div>
+                    <div id="resultDetails" class="result-details"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
